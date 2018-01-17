@@ -4,8 +4,7 @@ Game::Game() : window(VideoMode(800, 600), "OpenGL"),
 primatives(2),
 topLeft(-2.0, 0.5, -5.0),
 topRight(-1.0, 0.5, -5.0),
-bottomRight(-1.0, -0.5, -5.0),
-bottomLeft(-2.0, -0.5, -5.0)
+bottomRight(-1.0, -0.5, -5.0)
 {
 }
 
@@ -131,7 +130,6 @@ void Game::update()
 		topLeft =  m1.RotationZ(1) * topLeft;
 		topRight = m1.RotationZ(1) * topRight;
 		bottomRight = m1.RotationZ(1) * bottomRight;
-		bottomLeft = m1.RotationZ(1) * bottomLeft;
 	}
 }
 
@@ -141,12 +139,11 @@ void Game::draw()
 	glClear(GL_COLOR_BUFFER_BIT | GL_ACCUM_BUFFER_BIT);
 
 
-	glBegin(GL_QUADS); {
+	glBegin(GL_TRIANGLES); {
 		glColor3f(.5, .5, 1);
 		glVertex3f(topLeft.X(), topLeft.Y(), topLeft.Z());
 		glVertex3f(topRight.X(), topRight.Y(), topRight.Z());
 		glVertex3f(bottomRight.X(), bottomRight.Y(), bottomRight.Z());
-		glVertex3f(bottomLeft.X(), bottomLeft.Y(), bottomLeft.Z());
 	}
 	glEnd();
 

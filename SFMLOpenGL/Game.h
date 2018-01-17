@@ -34,7 +34,7 @@ private:
 
 	float rotationAngle = 0.0f;
 
-	Vector3Class topLeft, topRight, bottomRight, bottomLeft;
+	Vector3Class topLeft, topRight, bottomRight;
 	Vector3Class square[4];
 	 // ********************
 };
