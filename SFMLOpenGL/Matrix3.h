@@ -26,8 +26,8 @@ public:
 	double Determinant();
 	Matrix3 Inverse(Matrix3 M1);
 	Matrix3 Rotation(int t_angle);
-	Matrix3 Translate(int dx, int dy);
-	Matrix3 Scale(int dx, int dy);
+	Matrix3 Translate(double dx, double dy);
+	Matrix3 Scale(double dx, double dy);
 	Matrix3 Neg(Matrix3 M1);
 
 	Matrix3 RotationX(int _angle);

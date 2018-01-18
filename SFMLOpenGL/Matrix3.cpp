@@ -150,14 +150,14 @@ Matrix3 Matrix3::Rotation(int t_angle)
 		0, 0, 1);
 }
 
-Matrix3 Matrix3::Translate(int dx, int dy)
+Matrix3 Matrix3::Translate(double dx, double dy)
 {
 	return Matrix3(1, 0, 0,
 		0, 1, 0,
 		dx, dy, 1);
 }
 
-Matrix3 Matrix3::Scale(int dx, int dy)
+Matrix3 Matrix3::Scale(double dx, double dy)
 {
 	return Matrix3((double)dx / 100, 0, 0,
 		0, (double)dy / 100, 0,

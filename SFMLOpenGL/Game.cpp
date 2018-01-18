@@ -50,86 +50,43 @@ void Game::update()
 {
 	cout << "Update up" << endl;
 	rotationAngle = 0.01;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))//positive x, move right
-	{
-		glTranslatef(0.001f, 0.0f, 0.0f);
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))//negative x, move left
-	{
-		glTranslatef(-0.001f, 0.0f, 0.0f);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))//positive y, move up
-	{
-		glTranslatef(0.0f, 0.001f, 0.0f);
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))//negative y, move down
-	{
-		glTranslatef(0.0f, -0.001f, 0.0f);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Delete))//positive z, move out
-	{
-		glTranslatef(0.0f, 0.0f, 0.001f);
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::PageDown))//negative z, move in
-	{
-		glTranslatef(-0.0f, 0.0f, -0.001f);
-	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	Matrix3 m1;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
 	{
-		glRotatef(rotationAngle, 1.0f, 0.0f, 0.0f);
+		topLeft =  m1.Rotation(1) * topLeft;
+		topRight = m1.Rotation(1) * topRight;
+		bottomRight = m1.Rotation(1) * bottomRight;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
 	{
-		glRotatef(rotationAngle, -1.0f, 0.0f, 0.0f);
+		topLeft = m1.Rotation(-1) * topLeft;
+		topRight = m1.Rotation(-1) * topRight;
+		bottomRight = m1.Rotation(-1) * bottomRight;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		glRotatef(rotationAngle, 0.0f, 1.0f, 0.0f);
+		topLeft = m1.Scale(99, 101) * topLeft;
+		topRight = m1.Scale(99, 101) * topRight;
+		bottomRight = m1.Scale(99, 101) * bottomRight;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
 	{
-		glRotatef(rotationAngle, 0.0f, -1.0f, 0.0f);
+		topLeft = m1.Scale(101, 99) * topLeft;
+		topRight = m1.Scale(101, 99) * topRight;
+		bottomRight = m1.Scale(101, 99) * bottomRight;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
 	{
-		glRotatef(rotationAngle, 0.0f, 0.0f, 1.0f);
+		topLeft = m1.Translate(.1,.1) * topLeft;
+		topRight = m1.Translate(.1, .1) * topRight;
+		bottomRight = m1.Translate(.1, .1) * bottomRight;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
 	{
-		glRotatef(rotationAngle, 0.0f, 0.0f, -1.0f);
-	}
-			
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
-	{
-		glScalef(1.0001f, 1.0f, 1.0f);
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::V))
-	{
-		glScalef(0.9999f, 1.0f, 1.0f);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
-	{
-		glScalef(1.0f, 1.0001f, 1.0f);
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
-	{
-		glScalef(1.0f, 0.9999f, 1.0f);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::H))
-	{
-		glScalef(1.0f, 1.0f, 1.0001f);
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::N))
-	{
-		glScalef(1.0f, 1.0f, 0.9999f);
-	}
-	Matrix3 m1;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	{
-		topLeft =  m1.RotationZ(1) * topLeft;
-		topRight = m1.RotationZ(1) * topRight;
-		bottomRight = m1.RotationZ(1) * bottomRight;
+		topLeft = m1.Translate(-.1, -.1) * topLeft;
+		topRight = m1.Translate(-.1, -.1) * topRight;
+		bottomRight = m1.Translate(-.1, -.1) * bottomRight;
 	}
 }
 
